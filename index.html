@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floobyte Coming Soon</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .countdown {
+            font-size: 24px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        /* Add your own styles for additional customization */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Floobyte Coming Soon</h1>
+        <p>We're working on something exciting! Stay tuned for updates.</p>
+        <div class="countdown" id="countdown"></div>
+        <!-- You can add more content or features here -->
+    </div>
+
+    <script>
+        // Set the countdown time to 48 hours from now
+        const countdownDate = new Date().getTime() + 48 * 60 * 60 * 1000;
+
+        // Update the countdown every second
+        const countdownElement = document.getElementById('countdown');
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance <= 0) {
+                countdownElement.innerHTML = "Countdown expired!";
+            } else {
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `Countdown: ${hours}:${minutes}:${seconds}`;
+            }
+        };
+
+        // Update the countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
